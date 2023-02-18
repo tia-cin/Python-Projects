@@ -9,8 +9,6 @@
 <h1 align="center">Python Projects</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/tia-cin/python-projects?color=56BEB8">
-
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/tia-cin/python-projects?color=56BEB8">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/tia-cin/python-projects?color=56BEB8">
@@ -41,7 +39,9 @@
 
 ## :dart: About ##
 
-- [Email Sender]()
+- [Email Sender](https://github.com/tia-cin/Python-Projects/tree/main/email-sender)
+- [Word Replacement Program]()
+- [Basic Calculator]()
 
 ## :white_check_mark: Requirements ##
 
