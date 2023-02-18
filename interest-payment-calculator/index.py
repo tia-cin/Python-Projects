@@ -9,6 +9,6 @@ def main():
     amount_of_months = years * 12
     monthly_payment = principal * monthly_interest_rate / (1 - (1 + monthly_interest_rate) ** (-amount_of_months))
 
-    print(f"\n The monthly payment for this loan is: ${monthly_payment}")
+    print(f"\n The monthly payment for this loan is: ${round(monthly_payment, 2)}")
 
 main()
