@@ -39,9 +39,20 @@
 
 ## :dart: About ##
 
-- [Email Sender](https://github.com/tia-cin/Python-Projects/tree/main/email-sender)
-- [Word Replacement Program]()
-- [Basic Calculator]()
+- [Basic Calculator](https://github.com/tia-cin/Python-Projects/blob/main/basic-calculator/index.py)
+- [Dice Roller](https://github.com/tia-cin/Python-Projects/blob/main/dice-roller/index.py)
+- [Email Sender](https://github.com/tia-cin/Python-Projects/blob/main/email-sender/index.py)
+- [Email Slicer](https://github.com/tia-cin/Python-Projects/blob/main/email-slicer/index.py)
+- [Encryption & Decryption](https://github.com/tia-cin/Python-Projects/blob/main/encryption-decryption/index.py)
+- [Face Detector](https://github.com/tia-cin/Python-Projects/blob/main/face-detector/index.py)
+- [Graph Plotter](https://github.com/tia-cin/Python-Projects/blob/main/graph-plotter/index.py)
+- [Interest Payment Calculator](https://github.com/tia-cin/Python-Projects/blob/main/interest-payment-calculator/index.py)
+- [QR Generator](https://github.com/tia-cin/Python-Projects/blob/main/qr-generator/index.py)
+- [Quiz Program](https://github.com/tia-cin/Python-Projects/blob/main/quiz-program/index.py)
+- [Random Password Generator](https://github.com/tia-cin/Python-Projects/blob/main/random-password-generator/index.py)
+- [Site Connectivity Checker](https://github.com/tia-cin/Python-Projects/blob/main/site-connectivity-checker/index.py)
+- [World Dictionary](https://github.com/tia-cin/Python-Projects/blob/main/world-dictionary/index.py)
+- [Word Replacement Program](https://github.com/tia-cin/Python-Projects/blob/main/word-replacement/index.py)
 
 ## :white_check_mark: Requirements ##
 
