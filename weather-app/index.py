@@ -24,12 +24,12 @@ def main ():
     root.iconphoto(False, root_icon)
 
     # input city
+    Label(text="Please provide a city", fg=white, font=("calibri", 20), bg=dark).place(x=330, y=10)
     textfield = tk.Entry(root, justify="center", width=17, font=("Calibri", 21), bg=pink, border=0, fg=black)
-    textfield.place(x=50, y=50)
+    textfield.place(x=300, y=50)
     textfield.focus()
-
     textfield_button = Button(text="Search", borderwidth=0, cursor="hand2", bg=pink, width=10, height=2)
-    textfield_button.place(x=250, y=50)
+    textfield_button.place(x=500, y=50)
 
 
     root.mainloop()
