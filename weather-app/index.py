@@ -2,10 +2,16 @@ from tkinter import *
 import tkinter as tk
 from geopy.geocoders import Nominatim
 from tkinter import ttk, messagebox
+from dotenv import load_dotenv
 from timezonefinder import TimezoneFinder
 from datetime import datetime
 import requests
 import pytz
+import os
+
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 
 #colors
 black = "#17181D"
@@ -16,16 +22,49 @@ white = "#E9F4FF"
 
 def get_weather():
     city = textfield.get()
+
+    # get location
     geolocator = Nominatim(user_agent="geoapiExercises")
     location = geolocator.geocode(city)
     obj = TimezoneFinder()
     res = obj.timezone_at(lng=location.longitude, lat=location.latitude)
 
-    print(res)
+    # get current time of location
+    local = pytz.timezone(res)
+    local_time = datetime.now(local)
+    curr_time = local_time.strftime("%I:%M %p")
+    clock.config(text=curr_time)
+    name.config(text="Current Weather")
+
+    # request API
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
+
+    json_data = requests.get(url).json()
+    condition = json_data["weather"][0]["main"]
+    desc = json_data["weather"][0]["description"]
+    temperature = int(json_data["main"]["temp"] - 273.15)
+    pressure = json_data["main"]["pressure"]
+    humidity = json_data["main"]["humidity"]
+    wind = json_data["wind"]["speed"]
+
+    t.config(text=(temperature, "°C"))
+    c.config(text=(condition, "|", "feels", "like", temperature, "°C"))
+
+
 
 def main ():
     # turn variables to global
     global textfield
+    global name
+    global clock
+
+    global t
+    global c
+
+    global W
+    global h
+    global d
+    global p
 
     # create program
     root = Tk()
@@ -43,6 +82,12 @@ def main ():
     textfield_button = Button(text="Search", borderwidth=0, cursor="hand2", bg=pink, width=10, height=2, command=get_weather)
     textfield_button.place(x=500, y=50)
 
+    # current and local info
+    name = Label(root, font=("Calibri", 14), bg=dark, fg=white)
+    name.place(x=30, y=100)
+    clock = Label(root, font=("Calibri", 20), bg=dark, fg=white)
+    clock.place(x=30, y=130)
+
     # weather labels
     wind_label = Label(root, text="Wind", font=("Calibri", 16), fg=white, bg=dark)
     wind_label.place(x=120, y=400)
@@ -57,6 +102,12 @@ def main ():
     pressure_label.place(x=450, y=400)
 
     # weather results
+    t = Label(font=("Calibri", 16), bg=dark, fg=white)
+    t.place(x= 400, y=150)
+
+    c = Label(font=("Calibri", 16), bg=dark, fg=white)
+    c.place(x= 400, y=250)
+
     w = Label(text="---", font=("Calibri", 16), bg=dark, fg=white)
     w.place(x= 120, y=430)
 
