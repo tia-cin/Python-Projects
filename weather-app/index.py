@@ -8,6 +8,10 @@ from datetime import datetime
 import requests
 import pytz
 import os
+from PIL import ImageTk, Image
+from io import BytesIO
+from urllib.request import urlopen
+
 
 load_dotenv()
 
@@ -21,35 +25,47 @@ pink = "#FCD9B8"
 white = "#E9F4FF"
 
 def get_weather():
-    city = textfield.get()
+    try: 
+        city = textfield.get()
 
-    # get location
-    geolocator = Nominatim(user_agent="geoapiExercises")
-    location = geolocator.geocode(city)
-    obj = TimezoneFinder()
-    res = obj.timezone_at(lng=location.longitude, lat=location.latitude)
+        # get location
+        geolocator = Nominatim(user_agent="geoapiExercises")
+        location = geolocator.geocode(city)
+        obj = TimezoneFinder()
+        res = obj.timezone_at(lng=location.longitude, lat=location.latitude)
 
-    # get current time of location
-    local = pytz.timezone(res)
-    local_time = datetime.now(local)
-    curr_time = local_time.strftime("%I:%M %p")
-    clock.config(text=curr_time)
-    name.config(text="Current Weather")
+        # get current time of location
+        local = pytz.timezone(res)
+        local_time = datetime.now(local)
+        curr_time = local_time.strftime("%I:%M %p")
+        clock.config(text=curr_time)
+        name.config(text="Current Weather")
 
-    # request API
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
+        # request API
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
 
-    json_data = requests.get(url).json()
-    condition = json_data["weather"][0]["main"]
-    desc = json_data["weather"][0]["description"]
-    temperature = int(json_data["main"]["temp"] - 273.15)
-    pressure = json_data["main"]["pressure"]
-    humidity = json_data["main"]["humidity"]
-    wind = json_data["wind"]["speed"]
+        json_data = requests.get(url).json()
+        condition = json_data["weather"][0]["main"]
+        desc = json_data["weather"][0]["description"]
+        temperature = int(json_data["main"]["temp"] - 273.15)
+        pressure = json_data["main"]["pressure"]
+        humidity = json_data["main"]["humidity"]
+        wind = json_data["wind"]["speed"]
 
-    t.config(text=(temperature, "°C"))
-    c.config(text=(condition, "|", "feels", "like", temperature, "°C"))
+        t.config(text=(temperature, "°C"))
+        c.config(text=(condition, "|", "feels", "like", temperature, "°C"))
 
+        w.config(text=wind)
+        d.config(text=desc)
+        p.config(text=pressure)
+        h.config(text=humidity)
+
+        city_label = Label(text=city.capitalize(), font=("Calibri", 40), fg=white, bg=dark)
+        city_label.place(x=200, y=170)
+
+    except Exception as e:
+        messagebox.showerror(f"Weather App", "Invalid Input, please try again")
+        print(e)
 
 
 def main ():
@@ -61,10 +77,12 @@ def main ():
     global t
     global c
 
-    global W
+    global w
     global h
     global d
     global p
+
+    global root
 
     # create program
     root = Tk()
@@ -102,7 +120,7 @@ def main ():
     pressure_label.place(x=450, y=400)
 
     # weather results
-    t = Label(font=("Calibri", 16), bg=dark, fg=white)
+    t = Label(font=("Calibri", 60), bg=dark, fg=white)
     t.place(x= 400, y=150)
 
     c = Label(font=("Calibri", 16), bg=dark, fg=white)
