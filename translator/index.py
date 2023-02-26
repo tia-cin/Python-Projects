@@ -12,17 +12,24 @@ orange = "#FF8E2B"
 def translate():
     try:
         text = text1.get(1.0, END)
-        s1 = select1.get()
         s2 = select2.get()
 
-        if (text):
+        print(text)
+
+        if text:
             words = textblob.TextBlob(text)
+            lan = words.detect_language()
 
-            for i, j in lenguages.items():
-                if j == s2:
+            print(words, lan)
+
+            for i, j in languages.items():
+                print(i, j, s2.lower())
+                if j == s2.lower():
+
                     lan_ = i
+                    print(lan, lan_)
 
-            words = words.translate(from_lang=s1, to=str(lan_))
+            words = words.translate(from_lang=str(lan), to=str(lan_))
             text2.delete(1.0, END)
             text2.insert(END, words)
     
@@ -39,7 +46,8 @@ def main():
     global text1
     global text2
 
-    global lenguages
+    global languages
+
     # create program
     root = Tk()
     root.title("Translator")
@@ -51,7 +59,6 @@ def main():
     # languages
     languages = googletrans.LANGUAGES
     language_vals = [l.capitalize() for l in list(languages.values())]
-    lang1 = languages.keys()
 
     # selectors
     select1 = ttk.Combobox(root, values=language_vals, font=("Calibri", 14), state="r")
@@ -66,10 +73,10 @@ def main():
 
     # frame
     frame1 = Frame(root, bg=blue, bd=5)
-    frame1.place(x=600, y=90, width=450, height=210)
+    frame1.place(x=30, y=90, width=450, height=210)
     
     frame2 = Frame(root, bg=blue, bd=5)
-    frame2.place(x=30, y=90, width=450, height=210)
+    frame2.place(x=600, y=90, width=450, height=210)
 
     # text input
     text1 = Text(frame1, font=("Calibri", 16), bg=blue, relief=GROOVE, wrap=WORD, borderwidth=0)
