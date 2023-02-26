@@ -9,19 +9,49 @@ white = "#E0EAF5"
 blue = "#2E77AE"
 orange = "#FF8E2B"
 
+def translate():
+    try:
+        text = text1.get(1.0, END)
+        s1 = select1.get()
+        s2 = select2.get()
+
+        if (text):
+            words = textblob.TextBlob(text)
+
+            for i, j in lenguages.items():
+                if j == s2:
+                    lan_ = i
+
+            words = words.translate(from_lang=s1, to=str(lan_))
+            text2.delete(1.0, END)
+            text2.insert(END, words)
+    
+    except Exception as e:
+        messagebox.showerror("Translation", "Please try again")
+        print(e)
+
 def main():
+    global root
+
+    global select1
+    global select2
+
+    global text1
+    global text2
+
+    global lenguages
     # create program
     root = Tk()
     root.title("Translator")
-    root.geometry("1080x500")
+    root.geometry("1080x450")
     root.configure(background=black)
     img = PhotoImage(file="translator\icon.png")
     root.iconphoto(False, img)
 
     # languages
-    language = googletrans.LANGUAGES
-    language_vals = [l.capitalize() for l in list(language.values())]
-    lang1 = language.keys()
+    languages = googletrans.LANGUAGES
+    language_vals = [l.capitalize() for l in list(languages.values())]
+    lang1 = languages.keys()
 
     # selectors
     select1 = ttk.Combobox(root, values=language_vals, font=("Calibri", 14), state="r")
@@ -59,7 +89,11 @@ def main():
     scrollbar2.configure(command=text2.yview)
     text2.configure(yscrollcommand=scrollbar2.set)
 
+    #translate button
+    translate_btn = Button(root, text="Translate", font=("Calibri", 22), cursor="hand2", bd=0, bg=orange, fg=white, command=translate)
+    translate_btn.place(x=475, y=340)
 
+    
     root.mainloop()
 
 
