@@ -10,11 +10,14 @@ blue = "#2E77AE"
 orange = "#FF8E2B"
 
 def translate():
+    global languages
     try:
+        # get text and language to translate
         text = text1.get(1.0, END)
+        s1 = select1.get()
         s2 = select2.get()
 
-        print(text)
+        print(text,s1, s2)
 
         if text:
             words = textblob.TextBlob(text)
@@ -22,16 +25,13 @@ def translate():
 
             print(words, lan)
 
-            for i, j in languages.items():
-                print(i, j, s2.lower())
-                if j == s2.lower():
+            # for i, j in languages.items():
+            #     if j == s2.lower():
+            #         lan_ = i
 
-                    lan_ = i
-                    print(lan, lan_)
-
-            words = words.translate(from_lang=str(lan), to=str(lan_))
-            text2.delete(1.0, END)
-            text2.insert(END, words)
+            # words = words.translate(from_lang=str(lan), to=str(lan_))
+            # text2.delete(1.0, END)
+            # text2.insert(END, words)
     
     except Exception as e:
         messagebox.showerror("Translation", "Please try again")
