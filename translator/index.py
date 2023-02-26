@@ -20,12 +20,14 @@ def translate():
         if text:
             words = textblob.TextBlob(text)
 
+            # find both langs short name
             for i, j in languages.items():
                 if j == s2.lower():
                     lan_ = i
                 if j == s1.lower():
                     lan = i
-
+            
+            # translate it
             words = words.translate(from_lang=str(lan), to=str(lan_))
             text2.delete(1.0, END)
             text2.insert(END, words)
