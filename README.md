@@ -52,7 +52,8 @@
 - [Random Password Generator](https://github.com/tia-cin/Python-Projects/blob/main/random-password-generator/index.py)
 - [Site Connectivity Checker](https://github.com/tia-cin/Python-Projects/blob/main/site-connectivity-checker/index.py)
 - [Translator](https://github.com/tia-cin/Python-Projects/blob/main/translator/index.py)
-- [Weather Programm](https://github.com/tia-cin/Python-Projects/blob/main/weather-app/index.py)
+- [Weather Program](https://github.com/tia-cin/Python-Projects/blob/main/weather-app/index.py)
+- [White Board](https://github.com/tia-cin/Python-Projects/blob/main/white-board/index.py)
 - [World Dictionary](https://github.com/tia-cin/Python-Projects/blob/main/world-dictionary/index.py)
 - [Word Replacement Program](https://github.com/tia-cin/Python-Projects/blob/main/word-replacement/index.py)
 
