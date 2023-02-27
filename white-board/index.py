@@ -41,14 +41,34 @@ def colors_palette():
     id = colors.create_rectangle((10, 310,30,330), fill="white")
     colors.tag_bind(id, "Button-1", lambda x: show_color("white"))
 
+
+def locale_xy(work):
+    global curr_x, curr_y
+
+    curr_x = work.x
+    curr_y = work.y
+
+
+def add_line(work):
+    global curr_x, curr_y
+    
+    canvas.create_line((curr_x, curr_y, work.x, work.y), width=2, fill=color)
+    curr_x, curr_y = work.x, work.y
+
 def main():
-    global colors
+    global colors, canvas, curr_x, curr_y, color
+
     # program set up
     root = Tk()
     root.title("White Board")
     root.geometry("1050x620")
     root.configure(bg=white)
     root.resizable(False, False)
+
+    # variables
+    curr_x = 0
+    curr_y = 0
+    color = "black"
 
     # tools bar
     Canvas(root, bg=gray, width=80, height=570).place(x=20, y=20)
@@ -65,8 +85,8 @@ def main():
     # white board
     canvas = Canvas(root, bg=blank, width=890, height=570, cursor="hand2")
     canvas.place(x=130, y=20)
-    canvas.bind("<Button-1>")
-    canvas.bind("<B1-Motion>")
+    canvas.bind("<Button-1>", locale_xy)
+    canvas.bind("<B1-Motion>", add_line)
 
     root.mainloop()
 
