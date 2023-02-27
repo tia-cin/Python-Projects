@@ -7,6 +7,15 @@ white = "#EBEBEB"
 gray = "#C0C0C0"
 blank = "#FAFAFF"
 
+def new_canvas():
+    canvas.delete("all")
+    colors_palette()
+
+def show_color(new_col):
+    global color
+
+    color = new_col
+
 def colors_palette():
     id = colors.create_rectangle((10, 10,30,30), fill="black")
     colors.tag_bind(id, "Button-1", lambda x: show_color("black"))
@@ -51,7 +60,7 @@ def locale_xy(work):
 
 def add_line(work):
     global curr_x, curr_y
-    
+
     canvas.create_line((curr_x, curr_y, work.x, work.y), width=2, fill=color)
     curr_x, curr_y = work.x, work.y
 
@@ -74,7 +83,8 @@ def main():
     Canvas(root, bg=gray, width=80, height=570).place(x=20, y=20)
 
     # eraser
-    Button(root, text="Eraser", bg=gray).place(x=40, y=550)
+    eraser = Button(root, text="Eraser", bg=gray, command=new_canvas)
+    eraser.place(x=40, y=550)
 
     # color palette
     colors = Canvas(root, bg="#fff", width=40, height=340, bd=0)
