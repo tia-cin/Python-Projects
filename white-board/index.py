@@ -38,6 +38,9 @@ def colors_palette():
     id = colors.create_rectangle((10, 280,30,300), fill="pink")
     colors.tag_bind(id, "Button-1", lambda x: show_color("pink"))
 
+    id = colors.create_rectangle((10, 310,30,330), fill="white")
+    colors.tag_bind(id, "Button-1", lambda x: show_color("white"))
+
 def main():
     global colors
     # program set up
@@ -54,7 +57,7 @@ def main():
     Button(root, text="Eraser", bg=gray).place(x=40, y=550)
 
     # color palette
-    colors = Canvas(root, bg="#fff", width=40, height=300, bd=0)
+    colors = Canvas(root, bg="#fff", width=40, height=340, bd=0)
     colors.place(x=40, y=60)
 
     colors_palette()
