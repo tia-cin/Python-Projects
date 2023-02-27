@@ -18,37 +18,37 @@ def show_color(new_col):
 
 def colors_palette():
     id = colors.create_rectangle((10, 10,30,30), fill="black")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("black"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("black"))
 
     id = colors.create_rectangle((10, 40,30,60), fill="gray")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("gray"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("gray"))
     
     id = colors.create_rectangle((10, 70,30,90), fill="brown4")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("brown4"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("brown4"))
 
     id = colors.create_rectangle((10, 100,30,120), fill="red")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("red"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("red"))
 
     id = colors.create_rectangle((10, 130,30,150), fill="orange")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("orange"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("orange"))
 
     id = colors.create_rectangle((10, 160,30,180), fill="yellow")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("yellow"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("yellow"))
 
     id = colors.create_rectangle((10, 190,30,210), fill="green")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("green"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("green"))
 
     id = colors.create_rectangle((10, 220,30,240), fill="blue")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("blue"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("blue"))
 
     id = colors.create_rectangle((10, 250,30,270), fill="purple")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("purple"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("purple"))
 
     id = colors.create_rectangle((10, 280,30,300), fill="pink")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("pink"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("pink"))
 
     id = colors.create_rectangle((10, 310,30,330), fill="white")
-    colors.tag_bind(id, "Button-1", lambda x: show_color("white"))
+    colors.tag_bind(id, "<Button-1>", lambda x: show_color("white"))
 
 
 def locale_xy(work):
