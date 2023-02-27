@@ -68,7 +68,7 @@ def locale_xy(work):
 def add_line(work):
     global curr_x, curr_y
 
-    canvas.create_line((curr_x, curr_y, work.x, work.y), width=get_curr_val(), fill=color)
+    canvas.create_line((curr_x, curr_y, work.x, work.y), width=get_curr_val(), fill=color, capstyle=ROUND, smooth=TRUE)
     curr_x, curr_y = work.x, work.y
 
 def main():
@@ -106,6 +106,7 @@ def main():
     canvas.bind("<B1-Motion>", add_line)
 
 
+    # drawing width change
     curr_val = tkinter.DoubleVar()
 
     slider = ttk.Scale(root, from_=0, to=100, orient="horizontal", command=change_slider, variable=curr_val)
